@@ -205,3 +205,8 @@ cython_debug/
 marimo/_static/
 marimo/_lsp/
 __marimo__/
+
+#virtualenv
+#  Virtualenv specific template is maintained in a separate Virtualenv.gitignore that can
+#  be found at
+historyquesgen/
