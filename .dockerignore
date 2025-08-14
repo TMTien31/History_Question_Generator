@@ -1,0 +1,21 @@
+# Ignore environment variables
+.env
+
+# Ignore Python virtual environment
+venv/
+.env/
+.venv/
+historyquesgen/
+
+# Ignore Python cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Ignore system files
+.DS_Store
+
+# Ignore Git files
+.git
+.gitignore

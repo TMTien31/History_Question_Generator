@@ -46,19 +46,22 @@ def get_csv(file_path):
     base_folder = 'static/output/'
     if not os.path.isdir(base_folder):
         os.mkdir(base_folder)
-    output_file = base_folder+"QA.csv"
-    with open(output_file, "w", newline="", encoding="utf-8") as csvfile:
+
+    output_file = os.path.join(base_folder, "Bộ câu hỏi.csv")
+
+    # Dùng utf-8-sig để Excel mở file vẫn đọc tiếng Việt đúng
+    with open(output_file, "w", newline="", encoding="utf-8-sig") as csvfile:
         csv_writer = csv.writer(csvfile)
-        csv_writer.writerow(["Question", "Answer"])  # Writing the header row
+        csv_writer.writerow(["Câu hỏi", "Câu trả lời"])  # header tiếng Việt
 
         for question in ques_list:
-            print("Question: ", question)
+            print("Câu hỏi: ", question)
             answer = answer_generation_chain.run(question)
-            print("Answer: ", answer)
+            print("Câu trả lời: ", answer)
             print("--------------------------------------------------\n\n")
 
-            # Save answer to CSV file
             csv_writer.writerow([question, answer])
+
     return output_file
 
 
