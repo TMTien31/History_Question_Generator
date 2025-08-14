@@ -17,11 +17,9 @@ app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
 
 
-
 @app.get("/")
 async def index(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
-
 
 
 @app.post("/upload")
@@ -47,12 +45,12 @@ def get_csv(file_path):
     if not os.path.isdir(base_folder):
         os.mkdir(base_folder)
 
-    output_file = os.path.join(base_folder, "Bộ câu hỏi.csv")
+    output_file = os.path.join(base_folder, "Bộ câu hỏi trắc nghiệm.csv")
 
     # Dùng utf-8-sig để Excel mở file vẫn đọc tiếng Việt đúng
     with open(output_file, "w", newline="", encoding="utf-8-sig") as csvfile:
         csv_writer = csv.writer(csvfile)
-        csv_writer.writerow(["Câu hỏi", "Câu trả lời"])  # header tiếng Việt
+        csv_writer.writerow(["Câu hỏi", "Câu trả lời"])
 
         for question in ques_list:
             print("Câu hỏi: ", question)

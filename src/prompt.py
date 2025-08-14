@@ -1,3 +1,5 @@
+from langchain.prompts import PromptTemplate
+
 prompt_template = """
 You are a history teacher and an expert at creating multiple-choice questions based on historical materials and documents.
 Your goal is to prepare students for their history exams.
@@ -51,4 +53,20 @@ OUTPUT FORMAT:
 1. <Question> A. <Option> B. <Option> C. <Option> D. <Option>
 ...
 """
+)
+
+
+answer_prompt = PromptTemplate(
+    input_variables=["context", "question"],
+    template="""
+      You're an history teacher and an expert at answering questions based on historical materials and documents.
+      Your goal is to provide ONLY A, B, C, or D as the answer to the question based on the context provided.
+      If you are not sure, PLEASE ONLY say "N/a".
+
+      Context: {context}
+
+      Question: {question}
+
+      Answer:
+    """
 )
